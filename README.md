@@ -14,7 +14,7 @@ A Python AutoDL framework that, given only a dataset path, automatically detects
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/kodechrya/AutoDL.git
+   https://github.com/KodeCharya/AutoDL.git
    ```
 2. Install the dependencies:
    ```bash
