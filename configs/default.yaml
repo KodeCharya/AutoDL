@@ -1,0 +1,52 @@
+
+# Default configuration for AutoDL-deep
+
+# General settings
+seed: 42
+device: auto  # auto, cpu, or cuda
+task: auto    # auto, classification, regression
+
+# Data settings
+data_path: null # Must be provided via CLI
+test_size: 0.2
+stratify: true
+
+# Model specific settings
+model:
+  name: auto
+  # For tabular models
+  tabular:
+    mlp:
+      layers: [128, 64]
+      dropout: 0.1
+    fallback: "xgboost" # or "randomforest"
+  # For image models
+  image:
+    name: "resnet50" # or "efficientnet_b0"
+    pretrained: true
+    freeze_backbone: true
+  # For text models
+  text:
+    name: "distilbert-base-uncased"
+    max_length: 128
+
+# Training settings
+training:
+  epochs: 10
+  batch_size: 32
+  optimizer: "AdamW"
+  learning_rate: 1.0e-4
+  lr_scheduler: "cosine" # or "plateau"
+  early_stopping_patience: 3
+  gradient_accumulation_steps: 1
+  mixed_precision: true
+
+# Logging
+logging:
+  level: "INFO"
+  log_file: "autodeep.log"
+  tensorboard: false
+
+# Export settings
+export:
+  onnx: false
